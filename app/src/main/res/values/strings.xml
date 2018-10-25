@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HelloWorld</string>
+    <string name="edit_message">输入一条信息</string>
+    <string name="button_send">发送</string>
 </resources>
