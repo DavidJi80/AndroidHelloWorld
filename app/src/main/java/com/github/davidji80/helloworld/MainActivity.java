@@ -22,4 +22,34 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EXTRA_MESSAGE",message);
         startActivity(intent);
     }
+
+    public void btnFrameClick(View view){
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this,FrameLayoutActivity.class);
+        startActivity(intent);
+    }
+
+    public void btnLinearClick(View view){
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this,LinearLayoutActivity.class);
+        startActivity(intent);
+    }
+
+    public void btnTableClick(View view){
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this,TabIeLayoutActivity.class);
+        startActivity(intent);
+    }
+
+    public void btnGridClick(View view){
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this,GridLayoutActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
+
+
 }

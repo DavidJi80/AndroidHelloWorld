@@ -1,22 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="MissingConstraints">
 
     <EditText
         android:id="@+id/edit_message"
-        android:layout_width="wrap_content"
+        android:layout_width="wrap_content" android:inputType="" 
         android:layout_height="wrap_content"
-        android:hint="@string/edit_message"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:hint="@string/edit_message" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_send"
+        android:layout_alignTop="@+id/edit_message"
+        android:layout_alignBottom="@+id/edit_message"
+        android:layout_toRightOf="@+id/edit_message"
         android:onClick="sendMessage"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:text="@string/button_send" />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/tvButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_message"
+        android:layout_alignLeft="@+id/edit_message"
+        android:text="布局类型" />
+
+    <Button
+        android:id="@+id/btnFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvButtons"
+        android:layout_alignLeft="@+id/tvButtons"
+        android:onClick="btnFrameClick"
+        android:text="帧" />
+
+    <Button
+        android:id="@+id/btnLinear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvButtons"
+        android:layout_alignTop="@+id/btnFrame"
+        android:layout_alignBottom="@+id/btnFrame"
+        android:layout_toRightOf="@+id/btnFrame"
+        android:onClick="btnLinearClick"
+        android:text="线性" />
+
+    <Button
+        android:id="@+id/btnTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvButtons"
+        android:layout_alignTop="@+id/btnFrame"
+        android:layout_alignBottom="@+id/btnFrame"
+        android:layout_toRightOf="@+id/btnLinear"
+        android:onClick="btnTableClick"
+        android:text="表格" />
+
+    <Button
+        android:id="@+id/btnGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnFrame"
+        android:layout_alignBottom="@+id/btnFrame"
+        android:layout_toRightOf="@+id/btnTable"
+        android:onClick="btnGridClick"
+        android:text="网格" />
+</RelativeLayout>

@@ -16,6 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayMessageActivity"></activity>
+        <activity android:name=".FrameLayoutActivity"></activity>
+        <activity android:name=".LinearLayoutActivity"></activity>
+        <activity android:name=".TabIeLayoutActivity"></activity>
+        <activity android:name=".GridLayoutActivity"></activity>
     </application>
 
 </manifest>
