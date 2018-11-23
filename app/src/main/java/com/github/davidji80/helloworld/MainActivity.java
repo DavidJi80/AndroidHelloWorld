@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void rbClick(View view) {
+        Intent intent = new Intent();
         int id = view.getId();
         switch (id) {
             case R.id.rb1:
@@ -61,12 +62,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.rb2:
                 Toast.makeText(getApplicationContext(), "点击了日期时间", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
                 intent.setClass(MainActivity.this, DatePickerActivity.class);
                 startActivity(intent);
                 break;
             case R.id.rb3:
                 Toast.makeText(getApplicationContext(), "点击了下拉列表", Toast.LENGTH_SHORT).show();
+                intent.setClass(MainActivity.this, ClockActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

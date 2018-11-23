@@ -21,6 +21,7 @@
         <activity android:name=".TabIeLayoutActivity"></activity>
         <activity android:name=".GridLayoutActivity"></activity>
         <activity android:name=".DatePickerActivity"></activity>
+        <activity android:name=".ClockActivity"></activity>
     </application>
 
 </manifest>

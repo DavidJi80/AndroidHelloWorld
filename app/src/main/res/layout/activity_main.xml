@@ -116,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="rbClick"
-            android:text="下拉列表" />
+            android:text="多线程" />
     </RadioGroup>
 
     <LinearLayout
