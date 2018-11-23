@@ -10,11 +10,12 @@
 
     <EditText
         android:id="@+id/edit_message"
-        android:layout_width="wrap_content" android:inputType="" 
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:hint="@string/edit_message" />
+        android:hint="@string/edit_message"
+        android:inputType="" />
 
     <Button
         android:layout_width="wrap_content"
@@ -73,4 +74,98 @@
         android:layout_toRightOf="@+id/btnTable"
         android:onClick="btnGridClick"
         android:text="网格" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnFrame"
+        android:layout_alignLeft="@+id/btnFrame"
+        android:layout_gravity="center"
+        android:background="#cc0000"
+        android:padding="10dip"
+        android:text="常用View的使用"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <RadioGroup
+        android:id="@+id/rg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        android:layout_alignLeft="@+id/tv1"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="rbClick"
+            android:text="看图片" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rbClick"
+            android:text="时间日期" />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rbClick"
+            android:text="下拉列表" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg1"
+        android:layout_alignLeft="@+id/rg1">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="语文" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数学" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="英语" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="体育" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="生活" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/ll1"
+        android:layout_alignLeft="@+id/ll1"
+        android:src="@drawable/ic_launcher_background" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv1"
+        android:layout_alignLeft="@+id/iv1"/>
+
+
 </RelativeLayout>
