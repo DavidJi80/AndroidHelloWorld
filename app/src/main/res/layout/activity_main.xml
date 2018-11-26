@@ -167,5 +167,14 @@
         android:layout_below="@+id/iv1"
         android:layout_alignLeft="@+id/iv1"/>
 
+    <Button
+        android:id="@+id/btnDataKey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner"
+        android:layout_alignLeft="@+id/spinner"
+        android:onClick="btnDataKeyClick"
+        android:text="数据文件存储" />
+
 
 </RelativeLayout>

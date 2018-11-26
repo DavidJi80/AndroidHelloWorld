@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingConstraints">
+    <EditText
+        android:id="@+id/etWriteMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:hint="写入数据"
+        android:inputType="" />
+
+    <Button
+        android:id="@+id/btnWrite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/etWriteMsg"
+        android:layout_alignBottom="@+id/etWriteMsg"
+        android:layout_toRightOf="@+id/etWriteMsg"
+        android:onClick="saveData"
+        android:text="写入" />
+
+    <EditText
+        android:id="@+id/etReadMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etWriteMsg"
+        android:layout_alignLeft="@+id/etWriteMsg"
+        android:hint="读取数据"
+        android:inputType="" />
+
+    <Button
+        android:id="@+id/btnRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/etReadMsg"
+        android:layout_alignBottom="@+id/etReadMsg"
+        android:layout_toRightOf="@+id/etReadMsg"
+        android:onClick="readData"
+        android:text="读取" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etReadMsg"
+        android:layout_alignLeft="@+id/etReadMsg"
+        android:text="保存文件到内部存储器" />
+
+    <EditText
+        android:id="@+id/etSaveIF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        android:layout_alignLeft="@+id/tv1"
+        android:hint="写入内部存储器"
+        android:inputType="" />
+
+    <Button
+        android:id="@+id/btnSaveIF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/etSaveIF"
+        android:layout_alignBottom="@+id/etSaveIF"
+        android:layout_toRightOf="@+id/etSaveIF"
+        android:onClick="saveDataIF"
+        android:text="写入" />
+
+    <EditText
+        android:id="@+id/etReadIF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etSaveIF"
+        android:layout_alignLeft="@+id/etSaveIF"
+        android:hint="读取内部存储器"
+        android:inputType="" />
+
+    <Button
+        android:id="@+id/btnRedIF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/etReadIF"
+        android:layout_alignBottom="@+id/etReadIF"
+        android:layout_toRightOf="@+id/etReadIF"
+        android:onClick="readDataIF"
+        android:text="读取" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etReadIF"
+        android:layout_alignLeft="@+id/etReadIF"
+        android:text="保存文件到外部存储器" />
+
+    <RadioGroup
+        android:id="@+id/rg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv2"
+        android:layout_alignLeft="@+id/tv2"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="公共文件" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="私有文件" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etSaveEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg1"
+        android:layout_alignLeft="@+id/rg1"
+        android:hint="写入外部存储器"
+        android:inputType="" />
+
+    <Button
+        android:id="@+id/btnSaveEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/etSaveEF"
+        android:layout_alignBottom="@+id/etSaveEF"
+        android:layout_toRightOf="@+id/etSaveEF"
+        android:onClick="saveDataEF"
+        android:text="写入" />
+
+    <Button
+        android:id="@+id/btnDelEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnSaveEF"
+        android:layout_alignBottom="@+id/btnSaveEF"
+        android:layout_toRightOf="@+id/btnSaveEF"
+        android:onClick="delDataEF"
+        android:text="删除" />
+
+    <EditText
+        android:id="@+id/etReadEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etSaveEF"
+        android:layout_alignLeft="@+id/etSaveEF"
+        android:hint="读取外部存储器"
+        android:inputType="" />
+
+    <Button
+        android:id="@+id/btnRedEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/etReadEF"
+        android:layout_alignBottom="@+id/etReadEF"
+        android:layout_toRightOf="@+id/etReadEF"
+        android:onClick="readDataEF"
+        android:text="读取" />
+</RelativeLayout>
