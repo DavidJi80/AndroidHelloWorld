@@ -4,6 +4,9 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.github.davidji80.helloworld.R;
+import com.github.davidji80.helloworld.intent.CC;
 
 import java.util.ArrayList;
 
@@ -59,10 +63,55 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * 为获得返回结果而启动Activity
+     *
+     * @param view
+     */
     public void btnLinearClick(View view) {
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, LinearLayoutActivity.class);
-        startActivity(intent);
+        //startActivityForResult的第二个参数就是请求码
+        startActivityForResult(intent, CC.REQUEST_CODE);
+    }
+
+    /**
+     * 接收返回的方法
+     * 该方法首先根据请求码requestCode识别出是哪个Activity返回的，然后根据返回码resultCode做进一步处理
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //检查requestCode是否与发送的请求码匹配
+        if (requestCode==CC.REQUEST_CODE){
+            //检查结果代码是否等于RESULT_OK,相等表示成功返回
+            if(resultCode==Activity.RESULT_OK){
+                Bundle bundle=data.getExtras();
+                String resultMsg=bundle.getString(CC.RESULT_MSG);
+                EditText editText = findViewById(R.id.edit_message);
+                editText.setText(resultMsg);
+            }
+        }
+        //联系人APP返回方法获取选择联系人的手机号
+        else if(requestCode==CC.REQUEST_SELECT_CONTACT){
+            if(resultCode==Activity.RESULT_OK){
+                // 目标联系人的Uri
+                Uri contactUri = data.getData();
+                String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER};
+                Cursor cursor = getContentResolver().query(contactUri, projection,
+                        null, null, null);
+                if (cursor != null && cursor.moveToFirst()) {
+                    int numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                    //电话号码
+                    String number = cursor.getString(numberIndex);
+                    EditText editText = findViewById(R.id.edit_message);
+                    editText.setText(number);
+                }
+            }
+        }
     }
 
     public void btnTableClick(View view) {
@@ -124,5 +173,45 @@ public class MainActivity extends AppCompatActivity {
         intent.setClass(MainActivity.this, SQLiteActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * 打电话
+     * @param view
+     */
+    public void btnCallClick(View view) {
+        Uri number=Uri.parse("tel:5551234");
+        Intent intent = new Intent(Intent.ACTION_DIAL,number);
+        startActivity(intent);
+    }
+
+    /**
+     * 打开网页
+     * @param view
+     */
+    public void btnWebPageClick(View view) {
+        Uri webPage=Uri.parse("http://www.baidu.com");
+        Intent intent = new Intent(Intent.ACTION_VIEW,webPage);
+        startActivity(intent);
+    }
+
+    /**
+     * 从联系人中获取
+     * @param view
+     */
+    public void btnContactsClick(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        //从有电话号码的联系人中选取
+        intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+        /*
+        //从有电子邮件地址的联系人中选取
+        intent.setType(ContactsContract.CommonDataKinds.Email.CONTENT_TYPE);
+        //从有邮政地址的联系人中选取。
+        intent.setType(ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_TYPE);
+        */
+        startActivityForResult(intent,CC.REQUEST_SELECT_CONTACT);
+    }
+
+
+
 
 }

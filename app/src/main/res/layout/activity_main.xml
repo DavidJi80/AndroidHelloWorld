@@ -187,5 +187,34 @@
         android:onClick="btnSQLiteClick"
         android:text="SQLite" />
 
+    <Button
+        android:id="@+id/btnCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDataKey"
+        android:layout_alignLeft="@+id/btnDataKey"
+        android:onClick="btnCallClick"
+        android:text="打电话" />
+
+    <Button
+        android:id="@+id/btnWebPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnCall"
+        android:layout_alignBottom="@+id/btnCall"
+        android:layout_toRightOf="@+id/btnCall"
+        android:onClick="btnWebPageClick"
+        android:text="浏览网页" />
+
+    <Button
+        android:id="@+id/btnContacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnCall"
+        android:layout_alignBottom="@+id/btnCall"
+        android:layout_toRightOf="@+id/btnCall"
+        android:onClick="btnContactsClick"
+        android:text="联系人" />
+
 
 </RelativeLayout>
