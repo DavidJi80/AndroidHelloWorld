@@ -1,4 +1,4 @@
-package com.github.davidji80.helloworld;
+package com.github.davidji80.helloworld.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
+
+import com.github.davidji80.helloworld.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

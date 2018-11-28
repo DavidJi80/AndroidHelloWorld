@@ -3,26 +3,28 @@
     package="com.github.davidji80.helloworld">
 
     <application
+        android:name=".HelloWorldApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayMessageActivity"></activity>
-        <activity android:name=".FrameLayoutActivity"></activity>
-        <activity android:name=".LinearLayoutActivity"></activity>
-        <activity android:name=".TabIeLayoutActivity"></activity>
-        <activity android:name=".GridLayoutActivity"></activity>
-        <activity android:name=".DatePickerActivity"></activity>
-        <activity android:name=".ClockActivity"></activity>
-        <activity android:name=".SaveReadDataActivity"></activity>
+        <activity android:name=".activity.DisplayMessageActivity"></activity>
+        <activity android:name=".activity.FrameLayoutActivity"></activity>
+        <activity android:name=".activity.LinearLayoutActivity"></activity>
+        <activity android:name=".activity.TabIeLayoutActivity"></activity>
+        <activity android:name=".activity.GridLayoutActivity"></activity>
+        <activity android:name=".activity.DatePickerActivity"></activity>
+        <activity android:name=".activity.ClockActivity"></activity>
+        <activity android:name=".activity.SaveReadDataActivity"></activity>
+        <activity android:name=".activity.SQLiteActivity"></activity>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

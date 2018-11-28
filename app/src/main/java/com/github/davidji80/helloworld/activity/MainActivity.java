@@ -1,4 +1,4 @@
-package com.github.davidji80.helloworld;
+package com.github.davidji80.helloworld.activity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.github.davidji80.helloworld.R;
 
 import java.util.ArrayList;
 
@@ -111,11 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void btnDataKeyClick(View view) {
-
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, SaveReadDataActivity.class);
         startActivity(intent);
     }
 
+
+    public void btnSQLiteClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this, SQLiteActivity.class);
+        startActivity(intent);
+    }
 
 }

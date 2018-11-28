@@ -1,4 +1,4 @@
-package com.github.davidji80.helloworld;
+package com.github.davidji80.helloworld.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.github.davidji80.helloworld.R;
 
 import java.io.BufferedReader;
 import java.io.File;

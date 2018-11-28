@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".activity.MainActivity"
     tools:ignore="MissingConstraints">
 
     <EditText
@@ -175,6 +175,17 @@
         android:layout_alignLeft="@+id/spinner"
         android:onClick="btnDataKeyClick"
         android:text="数据文件存储" />
+
+    <Button
+        android:id="@+id/btnSQLite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvButtons"
+        android:layout_alignTop="@+id/btnDataKey"
+        android:layout_alignBottom="@+id/btnDataKey"
+        android:layout_toRightOf="@+id/btnDataKey"
+        android:onClick="btnSQLiteClick"
+        android:text="SQLite" />
 
 
 </RelativeLayout>
