@@ -6,14 +6,18 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.davidji80.helloworld.R;
@@ -22,6 +26,7 @@ import com.github.davidji80.helloworld.intent.CC;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private final String Tag = MainActivity.class.getSimpleName();
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -78,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 接收返回的方法
      * 该方法首先根据请求码requestCode识别出是哪个Activity返回的，然后根据返回码resultCode做进一步处理
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -86,18 +92,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //检查requestCode是否与发送的请求码匹配
-        if (requestCode==CC.REQUEST_CODE){
+        if (requestCode == CC.REQUEST_CODE) {
             //检查结果代码是否等于RESULT_OK,相等表示成功返回
-            if(resultCode==Activity.RESULT_OK){
-                Bundle bundle=data.getExtras();
-                String resultMsg=bundle.getString(CC.RESULT_MSG);
+            if (resultCode == Activity.RESULT_OK) {
+                Bundle bundle = data.getExtras();
+                String resultMsg = bundle.getString(CC.RESULT_MSG);
                 EditText editText = findViewById(R.id.edit_message);
                 editText.setText(resultMsg);
             }
         }
         //联系人APP返回方法获取选择联系人的手机号
-        else if(requestCode==CC.REQUEST_SELECT_CONTACT){
-            if(resultCode==Activity.RESULT_OK){
+        else if (requestCode == CC.REQUEST_SELECT_CONTACT) {
+            if (resultCode == Activity.RESULT_OK) {
                 // 目标联系人的Uri
                 Uri contactUri = data.getData();
                 String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER};
@@ -176,26 +182,29 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 打电话
+     *
      * @param view
      */
     public void btnCallClick(View view) {
-        Uri number=Uri.parse("tel:5551234");
-        Intent intent = new Intent(Intent.ACTION_DIAL,number);
+        Uri number = Uri.parse("tel:5551234");
+        Intent intent = new Intent(Intent.ACTION_DIAL, number);
         startActivity(intent);
     }
 
     /**
      * 打开网页
+     *
      * @param view
      */
     public void btnWebPageClick(View view) {
-        Uri webPage=Uri.parse("http://www.baidu.com");
-        Intent intent = new Intent(Intent.ACTION_VIEW,webPage);
+        Uri webPage = Uri.parse("http://www.baidu.com");
+        Intent intent = new Intent(Intent.ACTION_VIEW, webPage);
         startActivity(intent);
     }
 
     /**
      * 从联系人中获取
+     *
      * @param view
      */
     public void btnContactsClick(View view) {
@@ -208,10 +217,91 @@ public class MainActivity extends AppCompatActivity {
         //从有邮政地址的联系人中选取。
         intent.setType(ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_TYPE);
         */
-        startActivityForResult(intent,CC.REQUEST_SELECT_CONTACT);
+        startActivityForResult(intent, CC.REQUEST_SELECT_CONTACT);
     }
 
+    // 声明一个Handler对象
+    private Handler handler = new Handler();
 
+    //继承Thread类实现线程
+    private class CustomThread extends Thread {
+        @Override
+        public void run() {
+            Log.d(Tag, "使用Thread执行一个线程");
+            /*
+            EditText edit_message = findViewById(R.id.edit_message);
+            edit_message.setText("123");
+            */
+            /*
+             以上操作会报错，无法再子线程中访问UI组件，UI组件的属性必须在UI线程中访问
+             使用handler.post方式修改UI组件
+             */
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    EditText edit_message = findViewById(R.id.edit_message);
+                    edit_message.setText("123");
+                }
+            });
+        }
+    }
 
+    //实现Runnable接口实现线程
+    private class CustomRunnable implements Runnable {
+        @Override
+        public void run() {
+            Log.d(Tag, "使用Runnable接口执行一个线程");
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    EditText edit_message = findViewById(R.id.edit_message);
+                    edit_message.setText("456");
+                }
+            });
+        }
+    }
+
+    // 重写Handler的handleMessage() 方法处理Message
+    private Handler handlerMsg = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if(msg.what==1){
+                EditText edit_message = findViewById(R.id.edit_message);
+                edit_message.setText(msg.obj.toString());
+            }
+        }
+    };
+
+    //handler发送一个Message
+    private class RunnableMsgThread implements Runnable {
+        @Override
+        public void run() {
+            Log.d(Tag, "使用Runnable接口执行一个线程");
+            // 获取一个Message对象，设置what为1
+            Message msg = Message.obtain();
+            msg.obj = "789";
+            msg.what = 1;
+            // 发送这个消息到消息队列中
+            handlerMsg.sendMessage(msg);
+        }
+    }
+
+    public void rgThreadClick(View view) {
+        Intent intent = new Intent();
+        int id = view.getId();
+        switch (id) {
+            case R.id.rbT1:
+                new CustomThread().start();
+                break;
+            case R.id.rbT2:
+                new Thread(new CustomRunnable()).start();
+                break;
+            case R.id.rbT3:
+                new Thread(new RunnableMsgThread()).start();
+                break;
+            default:
+                break;
+        }
+    }
 
 }

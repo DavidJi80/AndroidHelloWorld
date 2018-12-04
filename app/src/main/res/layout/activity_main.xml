@@ -210,11 +210,42 @@
         android:id="@+id/btnContacts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnCall"
-        android:layout_alignBottom="@+id/btnCall"
-        android:layout_toRightOf="@+id/btnCall"
+        android:layout_alignTop="@+id/btnWebPage"
+        android:layout_alignBottom="@+id/btnWebPage"
+        android:layout_toRightOf="@+id/btnWebPage"
         android:onClick="btnContactsClick"
         android:text="联系人" />
+
+    <RadioGroup
+        android:id="@+id/rgThread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnCall"
+        android:layout_alignLeft="@+id/btnCall"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbT1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="rgThreadClick"
+            android:text="Thread" />
+
+        <RadioButton
+            android:id="@+id/rbT2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rgThreadClick"
+            android:text="Runnable" />
+
+        <RadioButton
+            android:id="@+id/rbT3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rgThreadClick"
+            android:text="handler.sendMessage" />
+    </RadioGroup>
 
 
 </RelativeLayout>
