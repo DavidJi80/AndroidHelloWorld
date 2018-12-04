@@ -1,11 +1,26 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!--
+    Theme.AppCompat 兼容主题的根主题
+    Theme.AppCompat.Black 兼容主题的黑色主题
+    Theme.AppCompat.Light 兼容主题的白色主题
+    -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--
+        自定义自己的配置
+        不显示默认的title
+        -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--定义一个主题，继承于AppTheme-->
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+
     </style>
 
 </resources>
