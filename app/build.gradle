@@ -1,39 +1,80 @@
+/*
+声明是Android程序，
+ com.android.application 表示这是一个应用程序模块,可直接运行
+ com.android.library 标识这是一个库模块，是依附别的应用程序运行
+应用了Android 程序的gradle插件,该plugin中提供了Android 编译、测试、打包等等的所有task
+*/
 apply plugin: 'com.android.application'
 
 android {
+    // 签名配置
     signingConfigs {
+        // 发布版签名配置
         release {
+            // key别名
             keyAlias 'helloworldkey'
+            // 密钥文件密码
             keyPassword '123456'
+            // 密钥文件路径
             storeFile file('E:/AndroidStudio/keyStore/helloworld.jks')
+            // key密码
             storePassword '123456'
         }
     }
+    // 编译sdk的版本，也就是API Level，例如API-19、API-20、API-21等等
     compileSdkVersion 27
+    /*
+    默认配置
+    注意，如果在AndroidMainfest.xml里面定义了与这里相同的属性，会以这里的为主
+     */
     defaultConfig {
+        // 应用程序的包名
         applicationId "com.github.davidji80.helloworld"
+        // 最小sdk版本，如果设备小于这个版本或者大于maxSdkVersion将无法安装这个应用
         minSdkVersion 19
+        // 目标sdk版本，充分测试过的版本（建议版本）
         targetSdkVersion 27
+        // 版本号，第一版是1，之后每更新一次加1
         versionCode 1
+        // 版本名，显示给用户看到的版本号
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    // 指定生成安装文件的配置，常有两个子包:release,debug，注：直接运行的都是debug安装文件
     buildTypes {
+        // release版本的配置，即生成正式版安装文件的配置
         release {
+            // 是否对代码进行混淆，true表示混淆
             minifyEnabled false
+            /*
+            指定混淆时使用的规则文件
+             proguard-android.txt指所有项目通用的混淆规则，proguard-rules.pro当前项目特有的混淆规则
+             release的Proguard默认为Module下的proguard-rules.pro文件
+             */
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
+        // debug版本的配置
         debug {
             signingConfig signingConfigs.release
         }
     }
 }
 
+/*
+ 指定当前项目的所有依赖关系：本地依赖、库依赖、远程依赖
+ 本地依赖：可以对本地 Jar 包或目录添加依赖关系
+ 库依赖：可以对项目中的库模块添加依赖关系
+ 远程依赖：可以对 jcenter 库上的开源项目添加依赖
+ 标准的远程依赖格式是 域名:组织名:版本号
+ */
 dependencies {
+    // 本地依赖
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // 远程依赖，com.android.support是域名部分，appcompat-v7是组名称，27.1.1是版本号
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    // 声明测试用列库
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

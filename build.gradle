@@ -1,20 +1,36 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+// 顶级构建文件，为所有子项目/模块添加常见的配置选项
 
 buildscript {
-    
+
+    //repositories闭包
     repositories {
         google()
+        //代码托管库：设置之后可以在项目中轻松引用jcenter上的开源项目
         jcenter()
     }
+    //dependencies闭包
     dependencies {
+        /*
+        声明gradle插件，插件版本号为3.2.1
+        gradle是一个强大的项目构建工具，不仅可以构建Android，还可以构建java，C++等
+        此处引用android的插件
+        */
         classpath 'com.android.tools.build:gradle:3.2.1'
 
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        /*
+        注意:不要将您的应用程序依赖项放在这里;
+        模块的依赖在各模块自己的build.gradle文件中配置
+        */
     }
 }
-
+/*
+allprojects中定义的属性会被应用到所有moudle中
+但是为了保证每个项目的独立性，一般不会在这里面操作太多共有的东西
+*/
 allprojects {
     repositories {
         google()
