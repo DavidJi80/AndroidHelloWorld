@@ -25,6 +25,7 @@
         <activity android:name=".activity.ClockActivity"></activity>
         <activity android:name=".activity.SaveReadDataActivity"></activity>
         <activity android:name=".activity.SQLiteActivity"></activity>
+        <activity android:name=".activity.AsyncTaskActivity"></activity>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

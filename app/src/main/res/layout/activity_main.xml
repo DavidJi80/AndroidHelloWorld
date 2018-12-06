@@ -244,7 +244,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="rgThreadClick"
-            android:text="handler.sendMessage" />
+            android:text="handler" />
+
+        <RadioButton
+            android:id="@+id/rbT4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rgThreadClick"
+            android:text="AsyncTask" />
+
     </RadioGroup>
 
 

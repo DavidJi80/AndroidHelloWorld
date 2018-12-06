@@ -287,7 +287,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void rgThreadClick(View view) {
-        Intent intent = new Intent();
         int id = view.getId();
         switch (id) {
             case R.id.rbT1:
@@ -296,8 +295,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.rbT2:
                 new Thread(new CustomRunnable()).start();
                 break;
-            case R.id.rbT3:
-                new Thread(new RunnableMsgThread()).start();
+            case R.id.rbT4:
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, AsyncTaskActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
