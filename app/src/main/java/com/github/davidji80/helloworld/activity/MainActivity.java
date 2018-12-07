@@ -304,5 +304,27 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+    public void rgAdapterClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this, AdapterActivity.class);
+        int id = view.getId();
+        switch (id) {
+            case R.id.rbA1:
+                intent.putExtra("AdapterType", "ArrayAdapter");
+                startActivity(intent);
+                break;
+            case R.id.rbA2:
+                intent.putExtra("AdapterType", "SimpleAdapter");
+                startActivity(intent);
+                break;
+            case R.id.rbA3:
+                intent.putExtra("AdapterType", "BaseAdapter");
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+    }
+
 
 }

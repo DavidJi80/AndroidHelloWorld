@@ -154,8 +154,8 @@
 
     <ImageView
         android:id="@+id/iv1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/ll1"
         android:layout_alignLeft="@+id/ll1"
         android:src="@drawable/ic_launcher_background" />
@@ -253,6 +253,37 @@
             android:onClick="rgThreadClick"
             android:text="AsyncTask" />
 
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rgAdapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgThread"
+        android:layout_alignLeft="@+id/rgThread"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbA1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="rgAdapterClick"
+            android:text="Array" />
+        <RadioButton
+            android:id="@+id/rbA2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="rgAdapterClick"
+            android:text="Simple" />
+        <RadioButton
+            android:id="@+id/rbA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="rgAdapterClick"
+            android:text="Base" />
     </RadioGroup>
 
 
