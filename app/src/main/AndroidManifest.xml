@@ -27,6 +27,7 @@
         <activity android:name=".activity.SQLiteActivity"></activity>
         <activity android:name=".activity.AsyncTaskActivity"></activity>
         <activity android:name=".activity.AdapterActivity"></activity>
+        <activity android:name=".activity.RecyclerViewActivity"></activity>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

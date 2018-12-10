@@ -73,6 +73,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     // 远程依赖，com.android.support是域名部分，appcompat-v7是组名称，27.1.1是版本号
     implementation 'com.android.support:appcompat-v7:27.1.1'
+    // RecyclerView控件
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     // 声明测试用列库
     testImplementation 'junit:junit:4.12'

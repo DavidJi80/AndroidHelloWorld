@@ -274,16 +274,43 @@
             android:id="@+id/rbA2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:onClick="rgAdapterClick"
             android:text="Simple" />
         <RadioButton
             android:id="@+id/rbA3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:onClick="rgAdapterClick"
             android:text="Base" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rgRecycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgAdapter"
+        android:layout_alignLeft="@+id/rgAdapter"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbRV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="rgRecyclerClick"
+            android:text="Liner" />
+        <RadioButton
+            android:id="@+id/rbRV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rgRecyclerClick"
+            android:text="Grid" />
+        <RadioButton
+            android:id="@+id/rbRV3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rgRecyclerClick"
+            android:text="Staggered" />
     </RadioGroup>
 
 

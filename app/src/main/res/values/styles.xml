@@ -16,11 +16,14 @@
         -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="android:listDivider">@drawable/view_rv_divider_bg</item>
     </style>
 
     <!--定义一个主题，继承于AppTheme-->
     <style name="AppTheme.NoActionBar" parent="AppTheme">
 
     </style>
+
 
 </resources>

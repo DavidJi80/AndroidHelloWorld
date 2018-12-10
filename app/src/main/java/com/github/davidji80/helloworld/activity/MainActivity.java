@@ -304,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
     public void rgAdapterClick(View view) {
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, AdapterActivity.class);
@@ -319,6 +320,28 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.rbA3:
                 intent.putExtra("AdapterType", "BaseAdapter");
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void rgRecyclerClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this, RecyclerViewActivity.class);
+        int id = view.getId();
+        switch (id) {
+            case R.id.rbRV1:
+                intent.putExtra("RecyclerView", "Liner");
+                startActivity(intent);
+                break;
+            case R.id.rbRV2:
+                intent.putExtra("RecyclerView", "Grid");
+                startActivity(intent);
+                break;
+            case R.id.rbRV3:
+                intent.putExtra("RecyclerView", "Staggered");
                 startActivity(intent);
                 break;
             default:
