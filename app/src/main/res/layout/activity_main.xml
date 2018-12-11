@@ -311,6 +311,12 @@
             android:layout_height="wrap_content"
             android:onClick="rgRecyclerClick"
             android:text="Staggered" />
+        <RadioButton
+            android:id="@+id/rbRV4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rgRecyclerClick"
+            android:text="ViewPager" />
     </RadioGroup>
 
 

@@ -344,6 +344,11 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("RecyclerView", "Staggered");
                 startActivity(intent);
                 break;
+            case R.id.rbRV4:
+                Intent intent2 = new Intent();
+                intent2.setClass(MainActivity.this, ViewPagerActivity.class);
+                startActivity(intent2);
+                break;
             default:
                 break;
         }
