@@ -3,10 +3,13 @@ package com.github.davidji80.helloworld.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.github.davidji80.helloworld.R;
 import com.github.davidji80.helloworld.adapter.CustomAdapter;
@@ -31,7 +34,8 @@ public class AdapterActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String adapterType = intent.getStringExtra("AdapterType");
-        ListView listView;listView = findViewById(R.id.lvArrayAdapter);
+        ListView listView;
+        listView = findViewById(R.id.lvArrayAdapter);
         if (adapterType.equals("ArrayAdapter")) {
             /**
              * 第一个参数：context上下文对象
@@ -69,12 +73,20 @@ public class AdapterActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
         } else if (adapterType.equals("BaseAdapter")) {
             //准备数据源
-            List<Person> lists = new ArrayList<>();
+            final List<Person> lists = new ArrayList<>();
             for (int i = 0; i < datas.length; i++) {
                 lists.add(new Person(imageViews[i], datas[i], contents[i]));
             }
             CustomAdapter adapter = new CustomAdapter(lists, this);
             listView.setAdapter(adapter);
+            //设置listview点击事件
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Person person=lists.get(i);
+                    Toast.makeText(AdapterActivity.this, person.getIntro(), Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
 
